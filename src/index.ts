@@ -16,10 +16,11 @@ const app = express();
 app.use(router);
 
 app.use((err: ErrorRequestHandler, req: Request, res: Response, next: NextFunction) => {
+
     if (err) {
-        console.log("catch error")
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({ message: err.toString() })
+        return res.status(res.statusCode).send({ message: err['message'] ?? "Ocorreu um erro interno inesperado" })
     }
+
     next()
 })
 
