@@ -8,6 +8,7 @@ router.get("/", (req: Request, res: Response, next: NextFunction) => {
 })
 
 router.get("*", (req: Request, res: Response, next: NextFunction) => {
+    res.status(StatusCodes.NOT_FOUND);
     throw new Error("Page not found")
 })
 
